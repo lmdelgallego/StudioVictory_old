@@ -8,6 +8,9 @@ var path = require('path');
 // INITIALIZIN EXPRESS APLICAION
 var app = express();
 
+//LOADING config
+var config = require('./lib/config');
+
 // BODY PARSER
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -30,9 +33,9 @@ var stylus = require('stylus');
 var nib = require('nib');
 
 //handlebars setup
-app.engine('.hbs', exphbs({
-  extname: '.hbs',
-  defaultLayaut: 'main',
+app.engine(config().views.engine, exphbs({
+  extname: config().views.extension,
+  defaultLayaut: config().views.layout,
   layoutDir: __dirname + '/views/layouts',
   partialsDir: __dirname + '/views/partials',
 }))
@@ -84,5 +87,5 @@ app.use(function(err, req, res, next) {
 if (!!module.parent) {
     module.exports = app;
 }else{
-  app.listen(3000);
+  app.listen(config().serverPort);
 }
