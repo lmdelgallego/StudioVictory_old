@@ -3,7 +3,14 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "pm2 start pm2.json"
+    "preinstall": "npm prune",
+    "postinstall": "bower prune, bower install, grunt githooks"
+  },
+  "author": "Luis Miguel Del Gallego Horta",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lmdelgallego/StudioVictory.git"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -19,6 +26,10 @@
   },
   "devDependencies":{
     "bower": "*",
-    "grunt": "*"
+    "grunt": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-jscs": "*",
+    "grunt-githooks": "*",
+    "grunt-shell": "*"
   }
 }
